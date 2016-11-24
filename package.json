@@ -1,0 +1,43 @@
+{
+  "name": "flushable",
+  "version": "1.0.0",
+  "description": "A writable file stream periodically flush contents to disk for high performance",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec -t 15000 test/*.test.js",
+    "cov": "node node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -t 15000 test/*.test.js",
+    "lint": "eslint --fix .",
+    "ci": "tnpm run lint && tnpm run cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-modules/flushable.git"
+  },
+  "keywords": [
+    "writable",
+    "stream",
+    "flush",
+    "file"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "author": "shaoshuai0102 <shaoshuai0102@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-modules/flushable/issues"
+  },
+  "homepage": "https://github.com/node-modules/flushable#readme",
+  "dependencies": {
+    "flushwritable": "^1.0.0"
+  },
+  "devDependencies": {
+    "delegates": "^1.0.0",
+    "eslint": "^3.10.2",
+    "eslint-config-egg": "^3.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.2",
+    "pedding": "^1.1.0",
+    "should": "^11.1.1"
+  }
+}
