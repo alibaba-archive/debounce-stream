@@ -1,0 +1,37 @@
+{
+  "name": "flushable",
+  "version": "1.0.0",
+  "description": "A transform stream repeatedly flush content for high performance.",
+  "main": "index.js",
+  "scripts": {
+    "autod": "autod",
+    "lint": "eslint .",
+    "test": "egg-bin test",
+    "cov": "egg-bin cov",
+    "ci": "npm run lint && npm run cov"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "autod": "^2.8.0",
+    "egg-bin": "^3.3.0",
+    "egg-ci": "^1.6.0",
+    "eslint": "^3.19.0",
+    "eslint-config-egg": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-modules/flushable.git"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "author": "shaoshuai0102<shaoshuai0102@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-modules/flushable/issues"
+  },
+  "homepage": "https://github.com/node-modules/flushable#readme",
+  "ci": {
+    "version": "6, 7"
+  }
+}

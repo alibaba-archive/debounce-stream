@@ -1,2 +1,2 @@
 # flushable
-A writable file stream repeatedly flush content to disk for high performance
+A transform stream repeatedly flush content for high performance.
