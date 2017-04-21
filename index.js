@@ -3,15 +3,15 @@
 const ms = require('humanize-ms');
 const PassThrough = require('stream').PassThrough;
 
-const TIMER = Symbol('Flushable#timer');
-const OPTIONS = Symbol('Flushable#options');
-const START_TIMER = Symbol('Flushable#startTimer');
+const TIMER = Symbol('DebounceStream#timer');
+const OPTIONS = Symbol('DebounceStream#options');
+const START_TIMER = Symbol('DebounceStream#startTimer');
 
 const DEFAULT = {
   flushInterval: ms('1s'),
 };
 
-class Flushable extends PassThrough {
+class DebounceStream extends PassThrough {
   constructor(options) {
     super(options);
     this[OPTIONS] = Object.assign({}, DEFAULT, options);
@@ -32,4 +32,4 @@ class Flushable extends PassThrough {
   }
 }
 
-module.exports = Flushable;
+module.exports = DebounceStream;

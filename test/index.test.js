@@ -5,18 +5,18 @@ const fs = require('fs');
 const os = require('os');
 const tmpdir = os.tmpdir();
 const path = require('path');
-const Flushable = require('..');
+const DebounceStream = require('..');
 const pedding = require('pedding');
 
 describe('test/index.test.js', () => {
   it('basic usage', done => {
-    const tmpFile = path.join(tmpdir, 'flushable-test-' + Date.now());
+    const tmpFile = path.join(tmpdir, 'debouncee-test-' + Date.now());
     const writable = fs.createWriteStream(tmpFile);
-    const flushable = new Flushable();
-    flushable.pipe(writable);
-    flushable.write('foo');
-    flushable.write('bar');
-    flushable.end();
+    const debounced = new DebounceStream();
+    debounced.pipe(writable);
+    debounced.write('foo');
+    debounced.write('bar');
+    debounced.end();
     writable.once('finish', () => {
       const cnt = fs.readFileSync(tmpFile, 'utf8');
       assert(cnt === 'foobar');
@@ -25,13 +25,13 @@ describe('test/index.test.js', () => {
   });
 
   it('should write to file after flushInterval hit', done => {
-    const tmpFile = path.join(tmpdir, 'flushable-test-' + Date.now());
-    const flushable = new Flushable();
+    const tmpFile = path.join(tmpdir, 'debounce-test-' + Date.now());
+    const debounced = new DebounceStream();
     const writable = fs.createWriteStream(tmpFile);
-    flushable.pipe(writable);
+    debounced.pipe(writable);
 
-    flushable.write('foo');
-    flushable.write('bar');
+    debounced.write('foo');
+    debounced.write('bar');
     done = pedding(2, done);
     setTimeout(() => {
       const cnt = fs.readFileSync(tmpFile, 'utf8');
@@ -41,30 +41,30 @@ describe('test/index.test.js', () => {
     setTimeout(() => {
       const cnt = fs.readFileSync(tmpFile, 'utf8');
       assert(cnt === 'foobar');
-      flushable.end(); // in case of fd leak
+      debounced.end(); // in case of fd leak
       done();
     }, 1100);
   });
 
   it('should write to file when stream.end() is called even if flushInterval has\'t been hit yet', done => {
-    const tmpFile = path.join(tmpdir, 'flushable-test-' + Date.now());
-    const flushable = new Flushable();
+    const tmpFile = path.join(tmpdir, 'debounce-test-' + Date.now());
+    const debounced = new DebounceStream();
     const writable = fs.createWriteStream(tmpFile);
-    flushable.pipe(writable);
+    debounced.pipe(writable);
 
-    flushable.write('foo');
-    flushable.write('bar');
+    debounced.write('foo');
+    debounced.write('bar');
     done = pedding(2, done);
     setTimeout(() => {
       const cnt = fs.readFileSync(tmpFile, 'utf8');
       assert(cnt === '');
       done();
-      flushable.end('==');
+      debounced.end('==');
       setTimeout(() => {
         const cnt = fs.readFileSync(tmpFile, 'utf8');
         assert(cnt === 'foobar==');
         done();
-      }, 1);
+      }, 100);
     }, 200);
   });
 });
