@@ -15,11 +15,14 @@
   },
   "devDependencies": {
     "autod": "^2.8.0",
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^2.1.4",
     "egg-bin": "^3.3.0",
     "egg-ci": "^1.6.0",
     "eslint": "^3.19.0",
     "eslint-config-egg": "^3.2.0",
-    "pedding": "^1.1.0"
+    "pedding": "^1.1.0",
+    "uuid": "^3.0.1"
   },
   "repository": {
     "type": "git",

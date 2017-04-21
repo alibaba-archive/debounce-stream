@@ -1,12 +1,13 @@
 'use strict';
 
-const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const tmpdir = os.tmpdir();
 const path = require('path');
-const DebounceStream = require('..');
+const assert = require('assert');
 const pedding = require('pedding');
+const DebounceStream = require('..');
+// const DebounceStream = require('../benchmark/lib/transform');
 
 describe('test/index.test.js', () => {
   it('basic usage', done => {
