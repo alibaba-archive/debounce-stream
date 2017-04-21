@@ -10,13 +10,16 @@
     "cov": "egg-bin cov",
     "ci": "npm run lint && npm run cov"
   },
-  "dependencies": {},
+  "dependencies": {
+    "humanize-ms": "^1.2.0"
+  },
   "devDependencies": {
     "autod": "^2.8.0",
     "egg-bin": "^3.3.0",
     "egg-ci": "^1.6.0",
     "eslint": "^3.19.0",
-    "eslint-config-egg": "^3.2.0"
+    "eslint-config-egg": "^3.2.0",
+    "pedding": "^1.1.0"
   },
   "repository": {
     "type": "git",
